@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Task Management</title>
+    <script src="https://cdn.jsdelivr.net/npm/handlebars@4.7.7/dist/handlebars.min.js"></script>
+    <link rel="stylesheet" href="./style.css">
+</head>
+
+<body>
+    <!-- Navigation Bar -->
+    <div class="navbar">
+        <a href="#about">About</a>
+        <a href="#faq">FAQ</a>
+        <a href="#login">Login</a>
+    </div>
+    
+    <!-- Hero Section -->
+    <div class="hero">
+        <h1>Welcome to Task Management</h1>
+        <p>A simple and efficient way to manage your tasks.</p>
+        <button onclick="location.href='home.html'">Get Started</button>
+    </div>
+
+    <!-- About Section -->
+    <section class="section" id="about">
+        <div class="section-content" id="about-content">
+            <!-- About content will be rendered here using Handlebars -->
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section class="section" id="faq">
+        <div class="section-content">
+            <h2>Frequently Asked Questions</h2>
+            <ul class="faq-list" id="faq-list">
+                <!-- FAQ items will be rendered here using Handlebars -->
+            </ul>
+        </div>
+    </section>
+
+    <!-- Handlebars templates -->
+    <script id="about-template" type="text/x-handlebars-template">
+        <h2>About Task Management</h2>
+        <p>{{aboutText}}</p>
+    </script>
+
+    <script id="faq-template" type="text/x-handlebars-template">
+        {{#each faqItems}}
+            <li class="faq-item">
+                <div class="faq-question">{{question}}</div>
+                <div class="faq-answer">{{answer}}</div>
+            </li>
+        {{/each}}
+    </script>
+
+    <script>
+        // Data for rendering
+        var data = {
+            aboutText: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam suscipit ligula non lacus tristique ultricies. Donec convallis tortor sit amet ante scelerisque, eget blandit magna aliquet. Proin commodo nec nisl vitae vulputate. Nulla facilisi. Aliquam vel fermentum nunc. Nam eget purus vitae sapien consequat sollicitudin. Nullam convallis, tortor a bibendum finibus, libero lorem consequat mi, eget interdum turpis felis et mauris. Nullam congue velit vitae felis malesuada, ac eleifend turpis cursus. Nulla ac malesuada risus, at cursus sapien. Curabitur at enim vitae arcu hendrerit sodales. Phasellus nec justo ultricies, pharetra velit eget, efficitur nulla. Aliquam id purus nec magna ultricies aliquam sit amet eu risus.",
+            faqItems: [
+                { question: "What is Task Management?", answer: "Task management involves organizing and prioritizing tasks to efficiently complete them." },
+                { question: "How can I use this Task Management website?", answer: "You can sign up for an account, create tasks, set deadlines, and track your progress." },
+                { question: "Is this Task Management website free to use?", answer: "Yes, this website offers basic task management features for free." }
+            ]
+        };
+
+        // Compile and render the templates
+        var aboutSource = document.getElementById("about-template").innerHTML;
+        var aboutTemplate = Handlebars.compile(aboutSource);
+        var aboutContent = document.getElementById("about-content");
+        aboutContent.innerHTML = aboutTemplate(data);
+
+        var faqSource = document.getElementById("faq-template").innerHTML;
+        var faqTemplate = Handlebars.compile(faqSource);
+        var faqList = document.getElementById("faq-list");
+        faqList.innerHTML = faqTemplate(data);
+    </script>
+</body>
+</html>
+
+
+
+
+
