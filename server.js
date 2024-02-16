@@ -1,7 +1,7 @@
 // Import express and mongoose modules
 const express = require('express');
 const routes = require('./routes');
-//const sequelize = require('./config/connection');
+const sequelize = require('./config/connection');
 
 
 // Task will be located in database
