@@ -15,7 +15,11 @@ const Task = sequelize.define('Task', {
     type: DataTypes.TEXT
   },
   dueDate: {
-    type: DataTypes.DATE
+    type: DataTypes.DATE,
+    get() {
+      const rawDate = this.getDataValue('dueDate');
+      return format(rawDate, 'yyyy-MM-dd');
+    }
   },
   status: {
     type: DataTypes.ENUM('todo', 'inProgress', 'done'),
@@ -24,9 +28,27 @@ const Task = sequelize.define('Task', {
 });
 
 // Define functions to interact with the Task model
+
+// const createTask = async (taskData) => {
+//   try {
+//     const newTask = await Task.create(taskData);
+//     return newTask;
+//   } catch (error) {
+//     console.error('Error creating task:', error);
+//     return null;
+//   }
+// };
+
+// Formatted the "createTask function" to added the date function 
+
+const { format } = require('date-fns');
+
 const createTask = async (taskData) => {
   try {
-    const newTask = await Task.create(taskData);
+    const currentDate = new Date();
+    const formattedDueDate = format(currentDate, 'yyyy-MM-dd');
+    
+    const newTask = await Task.create({ ...taskData, dueDate: formattedDueDate });
     return newTask;
   } catch (error) {
     console.error('Error creating task:', error);
