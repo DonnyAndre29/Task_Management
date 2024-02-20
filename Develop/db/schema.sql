@@ -1,5 +1,5 @@
 -- Created new database
-CREATE DATABASE IF NOT EXISTS task_management_db;
+CREATE DATABASE task_management_db;
 
 USE task_management_db;
 
