@@ -10,53 +10,63 @@
 
 <body>
     <!-- Navigation Bar -->
-    <div class="navbar">
-        <a href="#about">About</a>
-        <a href="#faq">FAQ</a>
-        <a href="#login">Login</a>
-    </div>
+    <div id="navbar"></div>
     
     <!-- Hero Section -->
-    <div class="hero">
-        <h1>Welcome to Task Management</h1>
-        <p>A simple and efficient way to manage your tasks.</p>
-        <button onclick="location.href='home.html'">Get Started</button>
-    </div>
+    <div id="hero"></div>
 
     <!-- About Section -->
-    <section class="section" id="about">
-        <div class="section-content" id="about-content">
-            <!-- About content will be rendered here using Handlebars -->
-        </div>
-    </section>
+    <div id="about"></div>
 
     <!-- FAQ Section -->
-    <section class="section" id="faq">
-        <div class="section-content">
-            <h2>Frequently Asked Questions</h2>
-            <ul class="faq-list" id="faq-list">
-                <!-- FAQ items will be rendered here using Handlebars -->
-            </ul>
-        </div>
-    </section>
+    <div id="faq"></div>
 
     <!-- Handlebars templates -->
+    <script id="navbar-template" type="text/x-handlebars-template">
+        <div class="navbar">
+            <a href="#about">About</a>
+            <a href="#faq">FAQ</a>
+            <a href="#login">Login</a>
+        </div>
+    </script>
+
+    <script id="hero-template" type="text/x-handlebars-template">
+        <div class="hero">
+            <h1>Welcome to Task Management</h1>
+            <p>A simple and efficient way to manage your tasks.</p>
+            <a href="../Sign up/Sign in page/signup.html">
+                <button>Get Started</button>
+            </a>
+        </div>
+    </script>
+
     <script id="about-template" type="text/x-handlebars-template">
-        <h2>About Task Management</h2>
-        <p>{{aboutText}}</p>
+        <section class="section" id="about">
+            <div class="section-content" id="about-content">
+                <h2>About Task Management</h2>
+                <p>{{aboutText}}</p>
+            </div>
+        </section>
     </script>
 
     <script id="faq-template" type="text/x-handlebars-template">
-        {{#each faqItems}}
-            <li class="faq-item">
-                <div class="faq-question">{{question}}</div>
-                <div class="faq-answer">{{answer}}</div>
-            </li>
-        {{/each}}
+        <section class="section" id="faq">
+            <div class="section-content">
+                <h2>Frequently Asked Questions</h2>
+                <ul class="faq-list" id="faq-list">
+                    {{#each faqItems}}
+                        <li class="faq-item">
+                            <div class="faq-question">{{question}}</div>
+                            <div class="faq-answer">{{answer}}</div>
+                        </li>
+                    {{/each}}
+                </ul>
+            </div>
+        </section>
     </script>
 
     <script>
-        // Data for rendering
+        // Sample data for rendering
         var data = {
             aboutText: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam suscipit ligula non lacus tristique ultricies. Donec convallis tortor sit amet ante scelerisque, eget blandit magna aliquet. Proin commodo nec nisl vitae vulputate. Nulla facilisi. Aliquam vel fermentum nunc. Nam eget purus vitae sapien consequat sollicitudin. Nullam convallis, tortor a bibendum finibus, libero lorem consequat mi, eget interdum turpis felis et mauris. Nullam congue velit vitae felis malesuada, ac eleifend turpis cursus. Nulla ac malesuada risus, at cursus sapien. Curabitur at enim vitae arcu hendrerit sodales. Phasellus nec justo ultricies, pharetra velit eget, efficitur nulla. Aliquam id purus nec magna ultricies aliquam sit amet eu risus.",
             faqItems: [
@@ -67,18 +77,29 @@
         };
 
         // Compile and render the templates
+        var navbarSource = document.getElementById("navbar-template").innerHTML;
+        var navbarTemplate = Handlebars.compile(navbarSource);
+        var navbarContent = document.getElementById("navbar");
+        navbarContent.innerHTML = navbarTemplate();
+
+        var heroSource = document.getElementById("hero-template").innerHTML;
+        var heroTemplate = Handlebars.compile(heroSource);
+        var heroContent = document.getElementById("hero");
+        heroContent.innerHTML = heroTemplate();
+
         var aboutSource = document.getElementById("about-template").innerHTML;
         var aboutTemplate = Handlebars.compile(aboutSource);
-        var aboutContent = document.getElementById("about-content");
+        var aboutContent = document.getElementById("about");
         aboutContent.innerHTML = aboutTemplate(data);
 
         var faqSource = document.getElementById("faq-template").innerHTML;
         var faqTemplate = Handlebars.compile(faqSource);
-        var faqList = document.getElementById("faq-list");
-        faqList.innerHTML = faqTemplate(data);
+        var faqContent = document.getElementById("faq");
+        faqContent.innerHTML = faqTemplate(data);
     </script>
 </body>
 </html>
+
 
 
 
