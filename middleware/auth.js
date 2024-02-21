@@ -1,6 +1,10 @@
-
+const express = require('express');
+const session = require('express-session');
 const { google } = require('googleapis');
 require('dotenv').config()
+
+
+const app = express();
 
 
 const oauth2Client = new google.auth.OAuth2(
@@ -19,11 +23,22 @@ const oauth2Client = new google.auth.OAuth2(
   
   app.get('/callback', async (req, res) => {
     const { code } = req.query;
-    const { tokens } = await oauth2Client.getToken(code);
+    const { tokens } = oauth2Client.getToken(code);
     oauth2Client.setCredentials(tokens);
     // Now you can make API requests using the authenticated client.
   });
 
+
+// Configure session middleware
+app.use(express.static());
+app.use(session({
+    secret: process.env.CLIENT_SECRET,
+    saveUninitialized: false,
+    resave: false,
+    cookie: {
+        secure: false, 
+    },
+}));
 
 
 

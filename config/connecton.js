@@ -1,9 +1,6 @@
 const Sequelize = require('sequelize')
 require('dotenv').config();
 
-
-// connection.js
-
 // Load the discovery doc to initialize the API
 async function initializeGapiClient() {
     await gapi.client.init({
@@ -22,18 +19,18 @@ async function initializeGapiClient() {
   function maybeEnableButtons() {
     if (gapiInited && gisInited) {
       document.getElementById('authorize_button').style.visibility = 'visible';
-      // Add other button interactions here
+      
     }
   }
   
   // Sign in the user upon button click
   function handleAuthClick() {
-    // Handle authentication logic
+    
   }
   
   // Sign out the user upon button click
   function handleSignoutClick() {
-    // Handle signout logic
+   
   }
   
   // Print task lists
