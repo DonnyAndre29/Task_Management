@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Google Tasks</title>
+  <link rel="stylesheet" href="styles.css">
+  <script src="tasks.js"></script>
+</head>
+<body>
+  <div class="container">
+    <h1>My Tasks</h1>
+    <div id="taskLists"></div>
+    <form id="createTaskForm">
+      <input type="text" id="taskTitle" placeholder="Task Title">
+      <input type="text" id="taskNotes" placeholder="Task Notes">
+      <select id="taskListId"></select>
+      <button type="submit">Create Task</button>
+    </form>
+    <ul id="tasks"></ul>
+  </div>
+
+  <script>
+    // Function to fetch task lists from the server
+    async function fetchTaskLists() {
+      const response = await fetch('/google/tasklists');
+      const data = await response.json();
+      const taskLists = data.items;
+      const selectElement = document.getElementById('taskListId');
+      selectElement.innerHTML = '';
+      taskLists.forEach(taskList => {
+        const option = document.createElement('option');
+        option.value = taskList.id;
+        option.textContent = taskList.title;
+        selectElement.appendChild(option);
+      });
+    }
+
+    // Function to fetch tasks from a specific task list
+    async function fetchTasks(taskListId) {
+      const response = await fetch(`/google/tasks/${taskListId}`);
+      const data = await response.json();
+      const tasks = data.items;
+      const tasksList = document.getElementById('tasks');
+      tasksList.innerHTML = '';
+      tasks.forEach(task => {
+        const li = document.createElement('li');
+        li.textContent = task.title;
+        tasksList.appendChild(li);
+      });
+    }
+
+    // Function to handle form submission and create a new task
+    async function createTask(event) {
+      event.preventDefault();
+      const taskTitle = document.getElementById('taskTitle').value;
+      const taskNotes = document.getElementById('taskNotes').value;
+      const taskListId = document.getElementById('taskListId').value;
+      const response = await fetch(`/google/tasks/${taskListId}`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({ title: taskTitle, notes: taskNotes })
+      });
+      if (response.ok) {
+        fetchTasks(taskListId);
+      } else {
+        alert('Failed to create task');
+      }
+    }
+
+    // Function to initialize the application
+    async function init() {
+      // Fetch task lists and populate the dropdown
+      await fetchTaskLists();
+
+      // Attach event listener to the form submission
+      const createTaskForm = document.getElementById('createTaskForm');
+      createTaskForm.addEventListener('submit', createTask);
+    }
+
+    // Initialize the application when the DOM is ready
+    document.addEventListener('DOMContentLoaded', init);
+  </script>
+</body>
+</html>
+
