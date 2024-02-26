@@ -1,6 +1,7 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 const { google } = require('googleapis');
+require('dotenv').config()
 const OAuth2 = google.auth.OAuth2;
 
 const app = express();
@@ -8,9 +9,9 @@ const PORT = process.env.PORT || 3001;
 
 // OAuth2 client configuration
 const oauth2Client = new OAuth2(
-  '133215348062-il5siql9vkrjp1ou308lohteukgi2etc.apps.googleusercontent.com',
-  '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',
-  'http://localhost:3001/google/redirect'
+  process.env.CLIENT_ID,
+  process.env.CLIENT_SECRET,
+  process.env.REDIRECT_URL
 );
 
 // Generate a URL that asks permissions for Google Tasks scope
