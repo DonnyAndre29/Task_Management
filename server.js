@@ -1,7 +1,9 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 const { google } = require('googleapis');
+const users = require('./config/connecton');
 const OAuth2 = google.auth.OAuth2;
+
 
 const app = express();
 const PORT = process.env.PORT || 3001;
@@ -53,6 +55,30 @@ app.get('/google/redirect', async (req, res) => {
     res.status(500).json({ error: error.message });
   }
 });
+
+//Imported the creatUser function 
+app.post('/api/signup', function (req, res) {
+  users.createUser(req.body);
+  res.send('User signup success');
+});
+
+app.post('/api/signin', async function (req, res) {
+  const { email, password } = req.body;
+
+  // Find the user in the database based on the provided username
+  const userMod = await users.findUserByEmail(email);
+
+  if (userMod.password == password) {
+    // If username and password are correct, send a success message
+    res.send('User signed in successfully');
+  } else {
+    res.status(500).json({ error: 'password incorrect' });
+  }
+
+
+});
+
+
 
 // Endpoint to retrieve tasks within a specific task list
 app.get('/google/tasks/:taskListId', async (req, res) => {
