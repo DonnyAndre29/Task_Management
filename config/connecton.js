@@ -1,3 +1,4 @@
+
 const { Sequelize, DataTypes } = require('sequelize');
 require('dotenv').config();
 
@@ -39,8 +40,7 @@ const createUser = async (userData) => {
     });
   } catch (error) {
     console.log(error);
-  }
-};
+
 
 const findUserByEmail = (_email) => {
   return users.findOne({
@@ -64,6 +64,7 @@ const deleteUser = async (userId) => {
   } catch (error) {
     console.log(error);
   }
+
 };
 
 module.exports = {
@@ -73,35 +74,8 @@ module.exports = {
 
 };
 
-// Callback after Google Identity Services are loaded
-function gisLoaded() {
-  // Initialize tokenClient and other necessary setup
-}
 
-// Enables user interaction after all libraries are loaded
-function maybeEnableButtons() {
-  if (gapiInited && gisInited) {
-    document.getElementById('authorize_button').style.visibility = 'visible';
+  
+  
+  
 
-  }
-}
-
-// Sign in the user upon button click
-function handleAuthClick() {
-
-}
-
-// Sign out the user upon button click
-function handleSignoutClick() {
-
-}
-
-// Print task lists
-async function fetchTaskLists() {
-  // Fetch and display task lists
-}
-
-// Load Google APIs and Identity Services
-// (Include these script tags in your HTML file)
-// <script async defer src="https://apis.google.com/js/api.js" onload="gapiLoaded()"></script>
-// <script async defer src="https://accounts.google.com/gsi/client" onload="gisLoaded()"></script>
