@@ -2,6 +2,7 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const { google } = require('googleapis');
 const users = require('./config/connecton');
+require('dotenv').config();
 const OAuth2 = google.auth.OAuth2;
 
 
