@@ -7,14 +7,7 @@ const sequelize = new Sequelize('task_management_db', 'root', '217Arundel', {
   dialect: 'mysql'
 });
 
-// Load the discovery doc to initialize the API
-async function initializeGapiClient() {
-  await gapi.client.init({
-    apiKey: process.env.API_KEY,
-    discoveryDocs: ['https://www.googleapis.com/discovery/v1/apis/tasks/v1/rest'],
-  });
-  // Set any other necessary configurations
-}
+
 
 const users = sequelize.define('users', {
   username: {
@@ -70,9 +63,8 @@ const deleteUser = async (userId) => {
 module.exports = {
   createUser,
   deleteUser,
-  findUserByUsername
-
-};
+  findUserByEmail
+}}};
 
 
   
