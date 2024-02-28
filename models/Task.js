@@ -31,4 +31,4 @@ const Task = sequelize.define('Task', {
 // Other functions (getTasks, updateTaskStatus) remain unchanged
 
 // Export the Task model and functions for use in the Controller module
-module.exports = { Task, createTask, getTasks, updateTaskStatus };
+module.exports = { Task };

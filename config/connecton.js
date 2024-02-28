@@ -1,4 +1,3 @@
-
 const { Sequelize, DataTypes } = require('sequelize');
 require('dotenv').config();
 
@@ -60,11 +59,13 @@ const deleteUser = async (userId) => {
 
 };
 
+
 module.exports = {
   createUser,
   deleteUser,
   findUserByEmail
 }}};
+
 
 
   
