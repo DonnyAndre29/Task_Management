@@ -5,10 +5,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Task Management</title>
     <script src="https://cdn.jsdelivr.net/npm/handlebars@4.7.7/dist/handlebars.min.js"></script>
-    <link rel="stylesheet" href="./style.css">
+    <link rel="stylesheet" href="../css/homepage.css">
 </head>
 
 <body>
+    <form action="http://localhost:3001/" method="POST">
     <!-- Navigation Bar -->
     <div id="navbar"></div>
     
@@ -32,7 +33,7 @@
 
     <script id="hero-template" type="text/x-handlebars-template">
         <div class="hero">
-            <h1>Welcome to Task Management</h1>
+            <h1>Welcome to Task Flow</h1>
             <p>A simple and efficient way to manage your tasks.</p>
             <a href="./signup.html">
                 <button>Get Started</button>
@@ -97,6 +98,7 @@
         var faqContent = document.getElementById("faq");
         faqContent.innerHTML = faqTemplate(data);
     </script>
+    </form>
 </body>
 </html>
 
