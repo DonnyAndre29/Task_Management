@@ -1,49 +1,28 @@
-const express = require('express');
-const session = require('express-session');
-const { google } = require('googleapis');
+// const express = require('express');
+// const session = require('express-session');
+// const { google } = require('googleapis');
+
+const passport =require("passport")
+const GoogleStrategy = require('passport-google-oauth20').Strategy;
 require('dotenv').config()
 
 
-const app = express();
+passport.serializeUser(function(user, done) {
+    done(null, user);
+});
 
+passport.deserializeUser(function(user, done) {
+        done(null, user);
+});
 
-const oauth2Client = new google.auth.OAuth2(
-    process.env.CLIENT_ID,
-    process.env.CLIENT_SECRET,
-    process.env.REDIRECT_URL
-  );
-  
-  app.get('/auth', (req, res) => {
-    const authUrl = oauth2Client.generateAuthUrl({
-      access_type: 'offline',
-      scope: ['https://www.googleapis.com/auth/tasks'],
-    });
-    res.redirect(authUrl);
-  });
-  
-  app.get('/callback', async (req, res) => {
-    const { code } = req.query;
-    const { tokens } = oauth2Client.getToken(code);
-    oauth2Client.setCredentials(tokens);
-    // Now you can make API requests using the authenticated client.
-  });
-
-
-// Configure session middleware
-app.use(express.static());
-app.use(session({
-    secret: process.env.CLIENT_SECRET,
-    saveUninitialized: false,
-    resave: false,
-    cookie: {
-        secure: false, 
+passport.use(new GoogleStrategy({
+        clientID: process.env.CLIENT_ID,
+        clientSecret: process.env.CLIENT_SECRET,
+        reDirectURL: process.env.REDIRECT_URL,
+        callbackURL: process.env.CALLBACK_URL,
+        passReqToCallback   : true
     },
-}));
-
-
-
-
-
-
-
-module.exports = oauth2Client;
+    function(request, accessToken, refreshToken, profile, done) {
+            return done(null, profile);
+    }
+));
