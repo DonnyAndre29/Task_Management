@@ -1,71 +1,24 @@
-const { Sequelize, DataTypes } = require('sequelize');
+const passport = require('passport');
 require('dotenv').config();
+const GoogleStrategy = require('passport-google-oauth2').Strategy; 
 
-const sequelize = new Sequelize('task_management_db', 'root', '217Arundel', {
-  host: 'localhost',
-  dialect: 'mysql'
-});
+passport.serializeUser((user , done) => { 
+	done(null , user); 
+}) 
+passport.deserializeUser(function(user, done) { 
+	done(null, user); 
+}); 
 
-
-
-const users = sequelize.define('users', {
-  username: {
-    type: DataTypes.STRING,
-    allowNull: false
-  },
-  email: {
-    type: DataTypes.STRING
-  },
-  password: {
-    type: DataTypes.STRING
-  }
-});
-
-users.up
-
-const createUser = async (userData) => {
-  try {
-    const newUser = await users.create({
-      username: userData.username,
-      email: userData.email,
-      password: userData.password
-    });
-  } catch (error) {
-    console.log(error);
-
-
-const findUserByEmail = (_email) => {
-  return users.findOne({
-    where: { email: _email }
-  });
-};
-
-const deleteUser = async (userId) => {
-  try {
-    const deletedUser = await users.destroy({
-      where: {
-        id: userId
-      }
-    });
-
-    if (deletedUser === 1) {
-      console.log('User deleted successfully');
-    } else {
-      console.log('User not found');
-    }
-  } catch (error) {
-    console.log(error);
-  }
-
-};
-
-
-module.exports = {
-  createUser,
-  deleteUser,
-  findUserByEmail
-}}};
-
+passport.use(new GoogleStrategy({ 
+	clientID: process.env.CLIENT_ID, 
+	clientSecret: process.env.CLIENT_SECRET, 
+	callbackURL: process.env.CALLBACK_URL, 
+	passReqToCallback:true
+}, 
+function(request, accessToken, refreshToken, profile, done) { 
+	return done(null, profile); 
+} 
+));
 
 
   
