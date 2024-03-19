@@ -9,7 +9,7 @@
 </head>
 
 <body>
-    <form action="http://localhost:3001" method="POST">
+    
     <!-- Navigation Bar -->
     <div id="navbar"></div>
     
@@ -27,7 +27,7 @@
         <div class="navbar">
             <a href="#about">About</a>
             <a href="#faq">FAQ</a>
-            <a href="../views/signin.html">Login</a>
+            <a href="task-flow">Dashboard</a>
         </div>
     </script>
 
@@ -35,7 +35,7 @@
         <div class="hero">
             <h1>Welcome to Task Flow</h1>
             <p>A simple and efficient way to manage your tasks.</p>
-             <button> <a href="../views/signup.html"> Get Started </a> </button>
+             <button> <a href="signup"> Get Started </a> </button>
             
         </div>
     </script>
@@ -43,7 +43,7 @@
     <script id="about-template" type="text/x-handlebars-template">
         <section class="section" id="about">
             <div class="section-content" id="about-content">
-                <h2>About Task Management</h2>
+                <h2>About Task Flow</h2>
                 <p>{{aboutText}}</p>
             </div>
         </section>
@@ -68,11 +68,11 @@
     <script>
         // Sample data for rendering
         var data = {
-            aboutText: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam suscipit ligula non lacus tristique ultricies. Donec convallis tortor sit amet ante scelerisque, eget blandit magna aliquet. Proin commodo nec nisl vitae vulputate. Nulla facilisi. Aliquam vel fermentum nunc. Nam eget purus vitae sapien consequat sollicitudin. Nullam convallis, tortor a bibendum finibus, libero lorem consequat mi, eget interdum turpis felis et mauris. Nullam congue velit vitae felis malesuada, ac eleifend turpis cursus. Nulla ac malesuada risus, at cursus sapien. Curabitur at enim vitae arcu hendrerit sodales. Phasellus nec justo ultricies, pharetra velit eget, efficitur nulla. Aliquam id purus nec magna ultricies aliquam sit amet eu risus.",
+            aboutText: "Task Flow is a tool that lets you effectively and efficiently keep a handle on tracking, managing, and executing the life cycle of a task or many tasks within a project, from inception to execution. The purpose of Task Flow is to improve the decision-making, communication, efficiency, and effectiveness of a task or project. Managing tasks is something that most adults do in their daily lives. Take running a household, for example. Whether you are single or have a family, you have to manage your time and energy throughout the day to complete tasks like attending work meetings, cleaning up, buying groceries, and more. On a project team, it requires you to have organizational skills and strategic thinking.",
             faqItems: [
-                { question: "What is Task Management?", answer: "Task management involves organizing and prioritizing tasks to efficiently complete them." },
-                { question: "How can I use this Task Management website?", answer: "You can sign up for an account, create tasks, set deadlines, and track your progress." },
-                { question: "Is this Task Management website free to use?", answer: "Yes, this website offers basic task management features for free." }
+                { question: "What is Task Flow?", answer: "Task Flow involves organizing and prioritizing tasks to efficiently complete them." },
+                { question: "How can I use this Task Flow website?", answer: "You can sign up for an account, create tasks, set deadlines, and track your progress." },
+                { question: "Is this Task Flow website free to use?", answer: "Yes, this website offers basic task management features for free." }
             ]
         };
 

@@ -121,6 +121,14 @@ h1 {
     color: #666;
 }
 
+.logout {
+    color: blue;
+    display: flex;
+    cursor: pointer;
+    text-align: justify;
+    text-decoration: none;
+}
+
 /* Responsive styles */
 @media only screen and (max-width: 768px) {
     .column {

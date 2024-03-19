@@ -1,4 +1,4 @@
-<!-- signup.html -->
+<!-- login.html -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -10,11 +10,12 @@
   <script src="https://kit.fontawesome.com/ff80728bb2.js" crossorigin="anonymous"></script>
 </head>
 <body>
-   
+    
+    <a class = "input-home" href="/">Home Page</a> 
     <div class="container">
         <div class="form-box">
             <h1 id="title">Sign up</h1>
-            <form action="">
+            <form action="/login" method="post">
                 <div class="input-group">
                     <div class="input-field" id="nameField">
                         <i class="fa-solid fa-user"></i>
@@ -30,10 +31,13 @@
                         <i class="fa-solid fa-lock"></i>
                         <input type="password" placeholder="Password"> 
                     </div>
+                    
                     <div class="btn-field">
+                         
+                        <button type="button" id="signupBtn">Sign Up </button>
                         
-                        <button type="button" id="signupBtn">Sign Up</button>
-                        <button type="button" id="signinBtn" class="disable">Sign In</button>
+                        
+                        <button type="button" id="signinBtn" class="disable">Sign In </button>
                         
                     </div>
                 </div>
@@ -64,6 +68,7 @@
         signinBtn.classList.add('disable');
     }
 </script>
+<script src="/assets/js/login.js"></script>
 </body>
 </html>
 

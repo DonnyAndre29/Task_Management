@@ -4,12 +4,15 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Task Manager</title>
-    <link rel="stylesheet" href="../css/task_management_UI.css">
+    <link rel="stylesheet" href="../css/task-flow.css">
 </head>
 <body>
-    <form action="http://localhost:3001/task-flow" method="POST">
+    
+    <form action = "http://localhost:3000/task-flow" method="post">
+    
     <div class="task-container">
-        <h1>Task Manager</h1>
+        <h1>Task Flow</h1>
+        <p><a class = "logout" href="/logout">Logout</a></p>
         <div class="column-container">
             <div class="column" id="todo-column" data-column="todo">
                 <h2>To Do</h2>
@@ -52,8 +55,11 @@
                 <ul id="task-list-completed" class="task-list"></ul>
             </div>
         </div>
+        
     </div>
+    
     </form>
-    <script src="task_management_UI.js"></script>
+    
+    <script src="/assets/js/task-flow.js"></script>
 </body>
 </html>

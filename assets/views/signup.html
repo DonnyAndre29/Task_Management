@@ -1,7 +1,7 @@
 <!-- signup.html -->
 <!DOCTYPE html>
 <html lang="en">
-<head>
+ <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Sign In Form</title>
@@ -9,14 +9,15 @@
   
   <script src="https://kit.fontawesome.com/ff80728bb2.js" crossorigin="anonymous"></script>
 </head>
+
 <body>
     
-    <button><a href='/auth/google'>Login With Google</a></button>
-   <!-- <form action="/auth/register" method="POST"></form>
-    <div class="container">
+    <a class = "input-home" href="/">Home Page</a>
+    
+     <!-- <div class="container">
         <div class="form-box">
             <h1 id="title">Sign up</h1>
-            <form action="">
+            <form action="/signup" method="post">
                 <div class="input-group">
                     <div class="input-field" id="nameField">
                         <i class="fa-solid fa-user"></i>
@@ -31,21 +32,25 @@
                     <div class="input-field">
                         <i class="fa-solid fa-lock"></i>
                         <input type="password" placeholder="Password"> 
-                    </div>
+                   
                     <div class="btn-field">
                         
                         <button type="button" id="signupBtn">Sign Up</button>
                         <button type="button" id="signinBtn" class="disable">Sign In</button>
-                        
+                         
                     </div>
                 </div>
+                
             </form>
         </div>
 
     </div>
-    </div>
-    </form> -->
-<!-- <script>
+    </div> -->
+    <button>
+        <a class ="google-SI" href='/auth/google'>Login With Google</a>
+    
+    </button>
+ <!-- <script> 
     
     let signupBtn = document.getElementById('signupBtn');
     let signinBtn = document.getElementById('signinBtn');
@@ -65,7 +70,42 @@
         signupBtn.classList.remove('disable');
         signinBtn.classList.add('disable');
     }
+</script> 
+<script src = "/assets/js/signup.js" ></script> -->
+
+
+<!-- <div class="mx-auto" id="my-signin2"></div>
+
+ <script>
+    function onSuccess(googleUser) {
+        // Handle successful login here
+        console.log('Logged in as: ' + googleUser.getBasicProfile().getName());
+
+        // Redirect to your desired page
+        window.location.href = 'https://task-flow-b7fd9bbf60ad.herokuap.com/success'; // Change this to your actual page URL
+    }
+
+    function onFailure(error) {
+        console.log(error);
+    }
+
+    function renderButton() {
+        gapi.signin2.render('my-signin2', {
+            'scope': 'profile email',
+            'width': 240,
+            'height': 50,
+            'longtitle': true,
+            'theme': 'dark',
+            'onsuccess': onSuccess,
+            'onfailure': onFailure
+        });
+    }
+
+    // Initialize the button
+    renderButton();
 </script> -->
+
+
 </body>
 </html>
-
+ 

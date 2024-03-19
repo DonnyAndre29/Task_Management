@@ -1,7 +1,7 @@
 const express = require('express');
 const router = express();
 const passport = require('passport');
-require('../config/connecton');
+require('../config/connection');
 require('dotenv').config();
 
 const userController = require('../controller/user-controller');
@@ -13,7 +13,8 @@ router.use(passport.initialize());
 router.use(passport.session());
 
 
-router.get('https://task-flow-b7fd9bbf60ad.herokuapp.com/', userController.loadAuth);
+
+router.get(process.env.WEBSITE_URL, userController.loadAuth);
 
 // Auth 
 router.get('/auth/google' , passport.authenticate('google', { scope: 
@@ -22,7 +23,7 @@ router.get('/auth/google' , passport.authenticate('google', { scope:
 
 
 // Auth Callback 
-router.get( '/auth/google/callback', 
+router.get('/auth/google/callback', 
 	passport.authenticate( 'google', { 
         successRedirect: '/success', 
 		failureRedirect: '/failure'
