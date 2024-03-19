@@ -1,4 +1,4 @@
-const SERVER_URL = 'http://localhost:3001';
+const SERVER_URL = 'http://localhost:3000';
 
 // Function to fetch and display task lists
 async function fetchAndDisplayTaskLists() {

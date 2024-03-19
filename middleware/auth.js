@@ -18,7 +18,7 @@ module.exports = {
       if (!req.isAuthenticated()) {
         return next();
       } else {
-        res.redirect('/log');
+        res.redirect('/logout');
       }
     },
   }

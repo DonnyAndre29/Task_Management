@@ -91,3 +91,22 @@ input{
     background: #eaeaea;
     color: #555;   
 }
+
+.input-home{
+    color: blue;
+    display: flex;
+    text-decoration: none;     
+    border: 0;
+    outline: 0;
+    cursor: pointer;
+}
+
+
+.google-SI{
+    color: blue;
+    align-content: center;
+    display: flex;
+    text-decoration: none;     
+    cursor: pointer;
+    height: fit-content;
+}

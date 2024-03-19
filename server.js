@@ -1,24 +1,23 @@
-// app.use(require("./routes/index"))
-// app.use(require('./routes/auth'))
-// app.get('/getstarted', (req, res) => {
-//     res.render('signup.html')
-// })
-
 const express = require('express');
 require('dotenv').config();
 const path = require('path');
 const session = require('express-session');
-const userRoutes = require('./routes/userRoutes');
-
-
+const Routes = require('./routes');
+const googleLogin = require('./routes/googleRoutes')
 
 
 const app = express();
-const PORT = process.env.PORT || 3001;
+const PORT = process.env.PORT || 3000;
 
 
 
 app.use(express.static(path.join(__dirname, 'assets')))
+// app.use(bodyParser.urlencoded({ extended: false }));
+app.set('views', __dirname + '/assets/views')
+app.set('view engine', 'html')
+app.engine('html', require('ejs').renderFile)
+
+
 
 app.use(session({
   resave: false,
@@ -26,22 +25,12 @@ app.use(session({
   secret: process.env.SESSION_SECRET 
 }));
 
-app.set('views', __dirname + '/assets/views')
-
-app.set('view engine', 'html')
-
-app.engine('html', require('ejs').renderFile)
-
-app.get('/', (req, res) => {
-    res.render('homepage.html')
-})
-
-
-app.use('/',userRoutes);
 
 
 
 
+app.use(Routes);
+app.use(googleLogin);
 
 
 

@@ -1,12 +1,12 @@
 // login.js
-document.getElementById('loginForm').addEventListener('submit', async function(event) {
+document.getElementById('loginBtn').addEventListener('submit', async function(event) {
     event.preventDefault();
   
     const email = document.getElementById('email').value;
     const password = document.getElementById('password').value;
   
     try {
-      const response = await fetch('/login', {
+      const response = await fetch('/api/login', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'
