@@ -2,8 +2,8 @@ const express = require('express');
 require('dotenv').config();
 const path = require('path');
 const session = require('express-session');
-const Routes = require('./routes');
-const googleLogin = require('./routes/googleRoutes')
+const Routes = require('./routes/homeRoute');
+// const googleLogin = require('./routes/googleRoutes')
 
 
 const app = express();
@@ -29,7 +29,7 @@ app.use(session({
 
 
 app.use(Routes);
-app.use(googleLogin);
+// app.use(googleLogin);
 
 
 
