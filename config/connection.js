@@ -1,5 +1,5 @@
 const passport = require('passport');
-// require('dotenv').config();
+require('dotenv').config();
 const GoogleStrategy = require('passport-google-oauth2').Strategy; 
 
 passport.serializeUser((user , done) => { 
@@ -10,9 +10,9 @@ passport.deserializeUser(function(user, done) {
 }); 
 
 passport.use(new GoogleStrategy({ 
-	clientID: '133215348062-il5siql9vkrjp1ou308lohteukgi2etc.apps.googleusercontent.com', 
-	clientSecret: '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',
-	callbackURL: 'https://task-flow-b7fd9bbf60ad.herokuapp.com/auth/google/callback',
+	clientID: process.env.CLIENT_ID, 
+	clientSecret: process.env.CLIENT_SECRET,
+	callbackURL: process.env.CALLBACK_URL,
 	passReqToCallback:true
 }, 
 

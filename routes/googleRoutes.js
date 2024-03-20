@@ -15,7 +15,7 @@ router.use(passport.session());
 
 
 // process.env.WEBSITE_URL
-router.get('https://task-flow-b7fd9bbf60ad.herokuapp.com/', userController.loadAuth);
+router.get(process.env.WEBSITE_URL, userController.loadAuth);
 
 // Auth 
 router.get('/auth/google' , passport.authenticate('google', { scope: 
