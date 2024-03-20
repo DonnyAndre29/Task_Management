@@ -8,7 +8,7 @@ const {
     updateTaskStatus,
     deleteTask
 
-} = require('../task-routes')
+} = require('./task-routes')
 
 
 router.route('/').get(getAllTasks).post(createTask)

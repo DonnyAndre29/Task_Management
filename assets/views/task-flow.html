@@ -8,11 +8,11 @@
 </head>
 <body>
     
-    <form action = "http://localhost:3000/task-flow" method="post">
-    
+    <form action = "http://localhost:3000" method="post">
+        <p><a class = "logout" href="/logout">Logout</a>
     <div class="task-container">
         <h1>Task Flow</h1>
-        <p><a class = "logout" href="/logout">Logout</a></p>
+        
         <div class="column-container">
             <div class="column" id="todo-column" data-column="todo">
                 <h2>To Do</h2>
@@ -58,8 +58,11 @@
         
     </div>
     
+        </p>
     </form>
     
     <script src="/assets/js/task-flow.js"></script>
+    <!-- <script src="/assets/js/task.js"></script> -->
 </body>
+
 </html>

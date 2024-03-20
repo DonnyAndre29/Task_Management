@@ -2,8 +2,9 @@ const express = require('express');
 require('dotenv').config();
 const path = require('path');
 const session = require('express-session');
-const Routes = require('./routes/homeRoute');
-// const googleLogin = require('./routes/googleRoutes')
+const homeRoutes = require('./routes/homeRoute');
+const googleLogin = require('./routes/googleRoutes');
+const dashBoard = require('./routes/dashboard')
 
 
 const app = express();
@@ -28,8 +29,12 @@ app.use(session({
 
 
 
-app.use(Routes);
-// app.use(googleLogin);
+app.use(homeRoutes);
+app.use(googleLogin);
+app.use(dashBoard);
+
+
+
 
 
 

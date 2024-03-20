@@ -1,15 +1,17 @@
 // const router = require('express').Router();
 // const homeRoute = require('./homeRoute');
-
-// // // const apiRoutes = require('./api');
-// // // const googleRoute = require('./googleRoutes')
-// // // const dashboard = require('./dashboard')
+// const googleRoute = require('./googleRoutes');
+// const dashboard = require('./dashboard');
+// // const apiRoute = require('./api')
 
 
 // router.use('/', homeRoute);
-// // // router.use('/success', dashboard);
-// // // router.use('/signup', googleRoute)
+// router.use('/dashboard', dashboard);
+// router.use('/signup', googleRoute)
+// // router.use('/api', apiRoutes);
 
-// // // // router.use('/api', apiRoutes);
+// // router.get('/signup', (req, res) => {
+// //     res.render('signup')
+// //   })
 
-// module.exports = router;
+module.exports = router;

@@ -1,4 +1,4 @@
-require('dotenv').config();
+
 const loadAuth = (req, res) => {
   res.render('auth');
 }
@@ -8,8 +8,8 @@ const successGoogleLogin = (req, res) => {
     res.redirect('/failure');
   } else {
     console.log(req.user);
-    // res.send("Welcome " + req.user.email);
-    res.redirect('/' | process.env.WEBSITE_URL)
+    res.send("Welcome " + req.user.email);
+   
   }
 }
 

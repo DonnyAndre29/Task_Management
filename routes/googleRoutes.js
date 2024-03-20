@@ -1,38 +1,39 @@
-// const express = require('express');
-// const router = express();
-// const passport = require('passport');
-// require('../config/connection');
-// require('dotenv').config();
+const express = require('express');
+const router = express();
+const passport = require('passport');
+require('../config/connection');
+require('dotenv').config();
 
-// const userController = require('../controller/user-controller');
-
-
-
-
-// router.use(passport.initialize()); 
-// router.use(passport.session());
+const userController = require('../controller/user-controller');
 
 
 
-// router.get(process.env.WEBSITE_URL, userController.loadAuth);
+  
 
-// // Auth 
-// router.get('/auth/google' , passport.authenticate('google', { scope: 
-// 	[ 'email', 'profile' ] 
-// })); 
+router.use(passport.initialize()); 
+router.use(passport.session());
 
 
-// // Auth Callback 
-// router.get('/auth/google/callback', 
-// 	passport.authenticate( 'google', { 
-//         successRedirect: '/success', 
-// 		failureRedirect: '/failure'
-// }));
+// process.env.WEBSITE_URL
+router.get('https://task-flow-b7fd9bbf60ad.herokuapp.com/', userController.loadAuth);
 
-// // Success 
-// router.get('/success' , userController.successGoogleLogin); 
+// Auth 
+router.get('/auth/google' , passport.authenticate('google', { scope: 
+	[ 'email', 'profile' ] 
+})); 
 
-// // failure 
-// router.get('/failure' , userController.failureGoogleLogin);
 
-// module.exports = router;
+// Auth Callback 
+router.get('/auth/google/callback', 
+	passport.authenticate( 'google', { 
+        successRedirect: '/success', 
+		failureRedirect: '/failure'
+}));
+
+// Success 
+router.get('/success' , userController.successGoogleLogin); 
+
+// failure 
+router.get('/failure' , userController.failureGoogleLogin);
+
+module.exports = router;

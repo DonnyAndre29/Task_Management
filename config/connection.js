@@ -10,9 +10,9 @@ passport.deserializeUser(function(user, done) {
 }); 
 
 passport.use(new GoogleStrategy({ 
-	clientID: process.env.CLIENT_ID, 
-	clientSecret: process.env.CLIENT_SECRET,
-	callbackURL: process.env.CALLBACK_URL,
+	clientID: '133215348062-il5siql9vkrjp1ou308lohteukgi2etc.apps.googleusercontent.com', 
+	clientSecret: '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',
+	callbackURL: 'https://task-flow-b7fd9bbf60ad.herokuapp.com/auth/google/callback',
 	passReqToCallback:true
 }, 
 
